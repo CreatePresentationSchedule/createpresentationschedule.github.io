@@ -15,7 +15,7 @@ save = () => {
 
     // TODO: Write some code to save a table as a CSV... it shouldn't be too complex
 
-    // // ? from isherwood on Stack Overflow https://stackoverflow.com/questions/14964035/how-to-export-javascript-array-info-to-csv-on-client-side
+    // ? from isherwood on Stack Overflow https://stackoverflow.com/questions/14964035/how-to-export-javascript-array-info-to-csv-on-client-side
     let csvContent = "data:text/csv;charset=utf-8," 
         + outputArray.map(e => e.join(",")).join("\n");
     let encodedUri = encodeURI(csvContent);

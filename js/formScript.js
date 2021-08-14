@@ -98,8 +98,6 @@ outputTable = (array) => { // ? this is for the table that can be saved
     // ------------------------------------------------------------------------------------------------------------------------
 
     // ! initial setup of output array
-    // TODO : the loop inside the loop will miss names if there is a break or lunch or something right now
-    // TODO : FIX THIS!
     outputArray = timeArray();
     let step = 0;
     outputArray.forEach( (e, i) => {
@@ -108,18 +106,19 @@ outputTable = (array) => { // ? this is for the table that can be saved
             step++;
         }
     });
-    step = 0;
     // trainer number loop
     for(let i = 1; i < ElNumberTrainers.value; i++){
+        step = 0;
         outputArray.push([`-----`,`-----`]);
         timeArray().forEach( (e) => {
-            if(e[1]==`` && array[(i)][step] != undefined){
-                outputArray.push([e[0],array[(i)][step]]);
+            if(e[1]==`` && array[i][step] != undefined){
+                outputArray.push([e[0],array[i][step]]);
                 step++;
             } else { 
                 outputArray.push(e);
             }
         });
+        console.log(array[i]);
     }
 
     // ------------------------------------------------------------------------------------------------------------------------
