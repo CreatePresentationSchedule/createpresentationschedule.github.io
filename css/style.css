@@ -1,0 +1,53 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+button, input[type=text], input[type=time], input[type=number], textarea, .progress, .toast, .input-group-text {
+    -webkit-border-radius: 0 !important;
+    -moz-border-radius: 0 !important;
+    border-radius: 0 !important;
+}
+
+.container {
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+    position:relative;
+}
+
+.noselect {
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.fader {
+    opacity:0;
+    -moz-transition: opacity .5s;
+    -webkit-transition: opacity .5s;
+    -ms-transition: opacity .5s;
+    transition: opacity .5s;
+}
+
+.progress{
+    width: 100vw;
+    height: 1em;
+}
+
+.progress-bar{
+    -moz-transition: width .5s;
+    -webkit-transition: width .5s;
+    -ms-transition: width .5s;
+    transition: width .5s;
+}
+
+.form-check-input:hover, .form-check-label:hover{
+    cursor: pointer;
+}

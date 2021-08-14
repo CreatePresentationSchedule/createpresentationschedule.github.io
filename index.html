@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Presentation Schedule</title>
+    <!-- custom css -->
+    <link href="./css/style.css" rel="stylesheet">
+    <!-- bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+</head>
+<body>
+    <!-- main in here -->
+    <main>
+        <div class="progress col-12">
+            <div id="navProgress" class="progress-bar" style="width: 0%;"></div>
+        </div>
+        <!-- container -->
+        <div class="d-flex justify-content-center align-items-center container" id="heightBox">
+            <!-- everything interesting lives in here-->
+            <div class="col-10 col-sm-10 col-md-6 col-lg-4">
+                <!-- first step - welcome/intro -->
+                <div class="step fader">
+                    <h5 class="noselect">Presentation Schedule</h5>
+                    <p class="text-muted noselect">Fill in the form to create a custom schedule.</p>
+                </div>
+                <!-- second step - start time -->
+                <div class="step fader">
+                    <h5 class="noselect">Start Time</h5>
+                    <p class="text-muted noselect">Please input a start time.</p>
+                    <input id="timeStart" type="time" class="form-control" value="09:00">
+                </div>
+                <!-- third step - end time -->
+                <div class="step fader">
+                    <h5 class="noselect">End Time</h5>
+                    <p class="text-muted noselect">Please input an end time.</p>
+                    <input id="timeEnd" type="time" class="form-control" value="17:30">
+                </div>
+                <!-- fourth step - presentation time -->
+                <div class="step fader">
+                    <h5 class="noselect">Presentation Length</h5>
+                    <p class="text-muted noselect">Please input the time allocated to each presentation.</p>
+                    <p class="text-danger noselect">Remember to include time for questions afterwards!</p>
+                    <div class="input-group noselect">
+                        <input id="timeGap" type="number" value="20" class="form-control">
+                        <div class="input-group-append" >
+                          <span class="input-group-text noselect">minutes</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- fifth step - break before lunch -->
+                <div class="step fader">
+                    <h5 class="noselect">Break Before Lunch</h5>
+                    <div class="form-check form-switch mb-2">
+                        <input class="form-check-input" type="checkbox" id="beforeLunchSwitch">
+                        <label class="text-muted noselect form-check-label" style="margin-top: -0.1em;" for="beforeLunchSwitch">Do you want to schedule a break before lunch?</label>
+                    </div>
+                    <p class="text-muted noselect">Please input a time for the break.</p>
+                    <input id="timeBeforeLunchBreak" type="time" class="form-control mb-3" value="11:00" disabled>
+                    <p class="text-muted noselect">Please input the length of the break.</p>
+                    <div class="input-group ">
+                        <input id="lengthBeforeLunchBreak" type="number" value="20" class="form-control" disabled>
+                        <div class="input-group-append" >
+                          <span class="input-group-text noselect">minutes</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- sixth step - lunch -->
+                <div class="step fader">
+                    <h5 class="noselect">Lunch Time</h5>
+                    <p class="text-muted noselect">Please input a time for lunch.</p>
+                    <input id="timeLunch" type="time" class="form-control" value="13:00">
+                </div>
+                <!-- seventh step - break after lunch -->
+                <div class="step fader">
+                    <h5 class="noselect">Break After Lunch</h5>
+                    <div class="form-check form-switch mb-2">
+                        <input class="form-check-input" type="checkbox" id="afterLunchSwitch">
+                        <label class="text-muted noselect form-check-label" style="margin-top: -0.1em;" for="afterLunchSwitch">Do you want to schedule a break after lunch?</label>
+                    </div>
+                    <p class="text-muted noselect">Please input a time for the break.</p>
+                    <input id="timeAfterLunchBreak" type="time" class="form-control mb-3" value="16:00" disabled>
+                    <p class="text-muted noselect">Please input the length of the break.</p>
+                    <div class="input-group">
+                        <input id="lengthAfterLunchBreak" type="number" value="20" class="form-control" disabled>
+                        <div class="input-group-append" >
+                          <span class="input-group-text noselect">minutes</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- eighth step - cohort -->
+                <div class="step fader">
+                    <h5 class="noselect">Cohort Participants</h5>
+                    <p class="text-muted noselect">Please input the names of those in the cohort who will be presenting.</p>
+                    <p class="text-danger noselect">Please separate names with a linebreak.</p>
+                    <textarea id="names" class="form-control" rows="5" placeholder=""></textarea>
+                </div>
+                <!-- ninth step - confirm -->
+                <div class="step fader">
+                    <h5 class="noselect">Comfirm Participants</h5>
+                    <p class="text-muted noselect">Please make sure that this list is correct before you continue.</p>
+                    <div class="form-check form-switch mb-2">
+                        <input class="form-check-input" type="checkbox" id="shuffleSwitch">
+                        <label class="text-muted noselect form-check-label" style="margin-top: -0.1em;" for="shuffleSwitch">Do you want to shuffle the list?</label>
+                    </div>
+                    <table id="confirmNames" class="table noselect"></table>
+                </div>
+                <!-- tenth step - trainers -->
+                <div class="step fader">
+                    <h5 class="noselect">Trainer Ammount</h5>
+                    <p class="text-muted noselect">Please input the number of trainers covering the presentations.</p>
+                    <input id="numberTrainer" type="number" value="1" class="form-control">
+                </div>
+                <!-- last step - save -->
+                <div class="step fader">
+                    <h5 class="noselect">Schedule</h5>
+                    <p class="text-muted noselect">Here is the schedule, you can return to previous steps to make changes.</p>
+                    
+                    <table id="outputTable" class="table noselect"></table>
+
+                    <button id="downloadBtn" type="button" class="noselect btn btn-success btn-lg col-12 mt-2">save</button>
+                </div>
+                <!-- nav buttons -->
+                <div id="navContainer" class="mt-4"> 
+                    <div class="col-5 col-sm-5 col-md-5 col-lg-4 float-start">
+                       <button id="prevBtn" type="button" class="noselect btn btn-outline-primary col-12">previous</button> 
+                    </div>
+                    <div class="col-5 col-sm-5 col-md-5 col-lg-4 float-end">
+                        <button id="nextBtn" type="button" class="noselect btn btn-outline-primary col-12">next</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- toast -->
+        <div class="position-fixed bottom-0 end-0 p-3 " style="z-index: 11">
+            <div id="liveToast" class="toast hide text-white bg-success" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="d-flex">
+                    <div class="toast-body noselect">
+                        Schedule saved!
+                    </div>
+                    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="./js/formScript.js"></script>
+    <script src="./js/navScript.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+    <!-- ! SAVE BUTTON SCRIPT - has to be loaded after bootstrap for toast to work! -->
+    <script src="./js/saveScript.js"></script>
+</body>
+</html>
